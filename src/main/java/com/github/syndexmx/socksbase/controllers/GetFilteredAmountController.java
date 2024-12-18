@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 @Slf4j
-public class GetFilteredSocksController {
+public class GetFilteredAmountController {
 
     private final SocksFilteredCollectionService socksFilteredCollectionService;
 
-    public GetFilteredSocksController(@Autowired SocksFilteredCollectionService socksFilteredCollectionService) {
+    public GetFilteredAmountController(@Autowired SocksFilteredCollectionService socksFilteredCollectionService) {
         this.socksFilteredCollectionService = socksFilteredCollectionService;
     }
 

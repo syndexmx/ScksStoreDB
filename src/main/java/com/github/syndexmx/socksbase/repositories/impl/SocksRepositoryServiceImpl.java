@@ -9,6 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.github.syndexmx.socksbase.repositories.mappers.SocksEntityMapper.socksEntityToSocks;
@@ -54,5 +55,17 @@ public class SocksRepositoryServiceImpl implements SocksRepositoryService {
     @Override
     public Long getExactlyMatchingAmount(String colour, int equal) {
         return socksRepository.getExactlyMatchingAmount(colour, equal);
+    }
+
+    @Override
+    public List<Socks> getMatchingList(int moreThan, int lessThan) {
+        return socksRepository.getMatchingList(moreThan, lessThan).stream()
+                .map(socksEntity -> socksEntityToSocks(socksEntity)).toList();
+    }
+
+    @Override
+    public List<Socks> getExactlyMatchingList(Integer equal) {
+        return socksRepository.getExactlyMatchingList(equal).stream()
+                .map(socksEntity -> socksEntityToSocks(socksEntity)).toList();
     }
 }
