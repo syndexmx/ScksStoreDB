@@ -1,4 +1,4 @@
-package com.github.syndexmx.socksbase.model;
+package com.github.syndexmx.socksbase.controllers.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,5 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class SockPair {
+public class SocksDto {
+
+    Long typeId;
+    String colour;
+    Integer cotton;
+    Integer amount;
 }
