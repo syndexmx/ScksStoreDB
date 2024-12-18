@@ -10,4 +10,6 @@ public interface SocksRepositoryService {
 
     Optional<Socks> findTypeByColourAndCotton(String colour, Integer cotton);
     Socks save(Socks socksToSave);
+    Long getMatchingAmount(String colour, int moreThan, int lessThan);
+    Long getExactlyMatchingAmount(String colour, int equal);
 }

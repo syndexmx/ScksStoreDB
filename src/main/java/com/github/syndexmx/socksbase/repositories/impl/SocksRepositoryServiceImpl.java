@@ -4,6 +4,7 @@ import com.github.syndexmx.socksbase.model.Socks;
 import com.github.syndexmx.socksbase.repositories.SocksRepositoryService;
 import com.github.syndexmx.socksbase.repositories.SocksRepository;
 import com.github.syndexmx.socksbase.repositories.entities.SocksEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Repository;
@@ -19,7 +20,7 @@ public class SocksRepositoryServiceImpl implements SocksRepositoryService {
 
     private final SocksRepository socksRepository;
 
-    public SocksRepositoryServiceImpl(SocksRepository socksRepository) {
+    public SocksRepositoryServiceImpl(@Autowired SocksRepository socksRepository) {
         this.socksRepository = socksRepository;
     }
 
@@ -43,5 +44,15 @@ public class SocksRepositoryServiceImpl implements SocksRepositoryService {
     @Override
     public Socks save(Socks socksToSave) {
         return socksEntityToSocks(socksRepository.save(socksToSocksEntity(socksToSave)));
+    }
+
+    @Override
+    public Long getMatchingAmount(String colour, int moreThan, int lessThan) {
+        return socksRepository.getMatchingAmount(colour, moreThan, lessThan);
+    }
+
+    @Override
+    public Long getExactlyMatchingAmount(String colour, int equal) {
+        return socksRepository.getExactlyMatchingAmount(colour, equal);
     }
 }
