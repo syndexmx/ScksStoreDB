@@ -21,11 +21,13 @@ public class GetFilteredSocksController {
 
     @GetMapping(path = "api/socks")
     Long getFilteredAmount(@RequestParam String colour,
-                           @RequestParam Integer lessThan,
-                           @RequestParam Integer moreThan){
-
-         return socksFilteredCollectionService.getFilteredAmount(colour, moreThan, lessThan);
-
+                           @RequestParam(required = false) Integer lessThan,
+                           @RequestParam(required = false) Integer moreThan,
+                           @RequestParam(required = false) Integer equal){
+        if (equal != null ) {
+            return socksFilteredCollectionService.getFilteredAmount(colour, equal);
+        }
+        return socksFilteredCollectionService.getFilteredAmount(colour, moreThan, lessThan);
     }
 
 }
