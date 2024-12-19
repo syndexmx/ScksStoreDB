@@ -27,6 +27,7 @@ class CorrectionSocksController {
     @PutMapping(path = "api/socks/{id}")
     ResponseEntity<Object> correctSocks(@PathVariable Long id,
                                         @RequestBody SocksDto socksDto) {
+        log.info("PUT @api/socks/" + id.toString() + ": " + socksDto.toString());
         socksDto.setTypeId(id);
         try {
             SocksDto resultDto = socksToSocksDto(correctionSocksService

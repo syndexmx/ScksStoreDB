@@ -32,29 +32,35 @@ public class GetFilteredListController {
                                                    @RequestParam(required = false) Integer moreThan,
                                                    @RequestParam(required = false) Integer equal){
         if (equal != null ) {
+            log.info("GET @api/socks/filtered : equal=" + equal.toString());
             return new ResponseEntity<>(
                     socksFilteredCollectionService.getFilteredList(equal).stream()
                             .map(socks -> socksToSocksDto(socks)).toList(),
                     HttpStatus.OK);
         }
         if (lessThan != null && moreThan !=null) {
+            log.info("GET @api/socks/filtered : moreThan=" + moreThan.toString() +
+                    " lessThan=" + lessThan.toString());
             return new ResponseEntity<>(socksFilteredCollectionService
                     .getFilteredList(moreThan, lessThan).stream()
                     .map(socks -> socksToSocksDto(socks)).toList(),
                     HttpStatus.OK);
         }
         if (lessThan != null) {
+            log.info("GET @api/socks/filtered : lessThan=" + lessThan.toString());
             return new ResponseEntity<>(socksFilteredCollectionService
                     .getFilteredList(0, lessThan).stream()
                     .map(socks -> socksToSocksDto(socks)).toList(),
                     HttpStatus.OK);
         }
         if (moreThan != null) {
+            log.info("GET @api/socks/filtered : moreThan=" + moreThan.toString());
             return new ResponseEntity<>(socksFilteredCollectionService
                     .getFilteredList(moreThan, 100).stream()
                     .map(socks -> socksToSocksDto(socks)).toList(),
                     HttpStatus.OK);
         }
+        log.info("GET @api/socks/filtered : no limits");
         return new ResponseEntity<>(socksFilteredCollectionService
                 .getFilteredList(0, 100).stream()
                 .map(socks -> socksToSocksDto(socks)).toList(),

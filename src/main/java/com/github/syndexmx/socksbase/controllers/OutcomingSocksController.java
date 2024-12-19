@@ -3,6 +3,7 @@ package com.github.syndexmx.socksbase.controllers;
 import com.github.syndexmx.socksbase.controllers.dtos.SocksDto;
 import com.github.syndexmx.socksbase.model.Socks;
 import com.github.syndexmx.socksbase.services.OutcomingSocksService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import static com.github.syndexmx.socksbase.controllers.mappers.SocksDtoMapper.s
 
 @RestController
 @RequestMapping
+@Slf4j
 public class OutcomingSocksController {
 
     private final OutcomingSocksService outcomingSocksService;
@@ -27,6 +29,7 @@ public class OutcomingSocksController {
 
     @PostMapping(path = "api/socks/outcome")
     ResponseEntity<Object> socksIn(@RequestBody SocksDto socksDto) {
+        log.info("POST @api/socks/outcome : " + socksDto.toString());
         Socks outgoingSocks = socksDtoToSocks(socksDto);
         try {
             SocksDto returnedSocksDto =
