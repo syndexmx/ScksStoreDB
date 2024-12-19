@@ -1,7 +1,6 @@
 package com.github.syndexmx.socksbase.controllers;
 
 import com.github.syndexmx.socksbase.controllers.dtos.SocksDto;
-import com.github.syndexmx.socksbase.model.Socks;
 import com.github.syndexmx.socksbase.services.CorrectionSocksService;
 import io.swagger.annotations.Tag;
 import lombok.extern.slf4j.Slf4j;

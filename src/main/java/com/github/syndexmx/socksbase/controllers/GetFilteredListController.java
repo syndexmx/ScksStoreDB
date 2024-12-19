@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import static com.github.syndexmx.socksbase.controllers.mappers.SocksDtoMapper.socksToSocksDto;
-import static com.github.syndexmx.socksbase.repositories.mappers.SocksEntityMapper.socksEntityToSocks;
 
 @RestController
 @RequestMapping

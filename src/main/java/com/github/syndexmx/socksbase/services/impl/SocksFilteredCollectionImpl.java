@@ -1,6 +1,5 @@
 package com.github.syndexmx.socksbase.services.impl;
 
-import com.github.syndexmx.socksbase.controllers.dtos.SocksDto;
 import com.github.syndexmx.socksbase.model.Socks;
 import com.github.syndexmx.socksbase.repositories.SocksRepositoryService;
 import com.github.syndexmx.socksbase.services.SocksFilteredCollectionService;
