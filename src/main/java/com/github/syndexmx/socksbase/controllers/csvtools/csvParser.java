@@ -32,7 +32,7 @@ public class csvParser {
         Long typeId = 0L;
         String colour = cells[0];
         Integer cotton = Integer.parseInt(cells[1]);
-        Integer amount = Integer.parseInt(cells[1]);
+        Integer amount = Integer.parseInt(cells[2]);
         Socks socks = Socks.builder()
                 .typeId(typeId)
                 .colour(colour)
