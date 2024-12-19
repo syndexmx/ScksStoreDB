@@ -1,0 +1,8 @@
+spring.application.name=socksbase
+
+spring.jpa.hibernate.ddl-auto=update
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/socks?currentSchema=public
+spring.datasource.username=POSTGRESS_USER_NAME
+spring.datasource.password=POSTGRESS_USER_PASSWORD
+
