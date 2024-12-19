@@ -1,6 +1,7 @@
 package com.github.syndexmx.socksbase.controllers;
 
 import com.github.syndexmx.socksbase.services.SocksFilteredCollectionService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ public class GetFilteredAmountController {
     }
 
     @GetMapping(path = "api/socks")
+    @Operation(summary = "Получение количества носков по фильтру", description = "Позволяет узнать количество хранимых носков, удовлетворяющих критериям по цвету и составу")
     ResponseEntity<Long> getFilteredAmount(@RequestParam String colour,
                                            @RequestParam(required = false) Integer lessThan,
                                            @RequestParam(required = false) Integer moreThan,
