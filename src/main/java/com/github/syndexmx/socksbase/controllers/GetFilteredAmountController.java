@@ -27,24 +27,30 @@ public class GetFilteredAmountController {
                                            @RequestParam(required = false) Integer moreThan,
                                            @RequestParam(required = false) Integer equal){
         if (equal != null ) {
+            log.info("GET @api/socks : " + colour + " equal=" + equal.toString());
             return new ResponseEntity<>(socksFilteredCollectionService.getFilteredAmount(colour, equal),
                     HttpStatus.OK);
         }
         if (lessThan != null && moreThan !=null) {
+            log.info("GET @api/socks : " + colour + " moreThan=" + moreThan.toString() +
+                    " lessThan=" + lessThan.toString());
             return new ResponseEntity<>(socksFilteredCollectionService
                     .getFilteredAmount(colour, moreThan, lessThan),
                     HttpStatus.OK);
         }
         if (lessThan != null) {
+            log.info("GET @api/socks : " + colour + " lessThan=" + lessThan.toString());
             return new ResponseEntity<>(socksFilteredCollectionService
                     .getFilteredAmount(colour, 0, lessThan),
                     HttpStatus.OK);
         }
         if (moreThan != null) {
+            log.info("GET @api/socks : " + colour + " moreThan=" + moreThan.toString());
             return new ResponseEntity<>(socksFilteredCollectionService
                     .getFilteredAmount(colour, moreThan, 100),
                     HttpStatus.OK);
         }
+        log.info("GET @api/socks : " + colour);
         return new ResponseEntity<>(socksFilteredCollectionService
                 .getFilteredAmount(colour, 0, 100),
                 HttpStatus.OK);

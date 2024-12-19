@@ -28,6 +28,7 @@ public class IncomingSocksController {
 
     @PostMapping(path = "api/socks/income")
     ResponseEntity<Object> socksIn(@RequestBody SocksDto socksDto) {
+        log.info("POST @api/socks/income : " + socksDto.toString());
         Socks incomingSocks = socksDtoToSocks(socksDto);
         try {
             SocksDto returnedSocksDto =
