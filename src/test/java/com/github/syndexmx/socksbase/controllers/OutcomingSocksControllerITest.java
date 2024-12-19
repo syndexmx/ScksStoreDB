@@ -15,13 +15,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static com.github.syndexmx.socksbase.controllers.dtos.TestSocksDto.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class OutcomingSocksControllerTest {
+class OutcomingSocksControllerITest {
 
     @Autowired
     MockMvc mockMvc;

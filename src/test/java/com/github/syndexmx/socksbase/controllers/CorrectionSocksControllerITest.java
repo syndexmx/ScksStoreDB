@@ -21,7 +21,7 @@ import static com.github.syndexmx.socksbase.controllers.dtos.TestSocksDto.testSo
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class CorrectionSocksControllerTest {
+class CorrectionSocksControllerITest {
 
     @Autowired
     MockMvc mockMvc;
@@ -38,7 +38,13 @@ class CorrectionSocksControllerTest {
                                 + socksDtoToSave.getTypeId().toString())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(socksJson))
-                .andExpect(MockMvcResultMatchers.content().json(socksJson));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.colour")
+                        .value(socksDtoToSave.getColour()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.cotton")
+                        .value(socksDtoToSave.getCotton()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.amount")
+                        .value(socksDtoToSave.getAmount()))
+                .andExpect(MockMvcResultMatchers.status().isAccepted());
     }
 
     @Test
@@ -50,14 +56,26 @@ class CorrectionSocksControllerTest {
                                 + socksDtoToSave.getTypeId().toString())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(socksJson))
-                .andExpect(MockMvcResultMatchers.content().json(socksJson));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.colour")
+                        .value(socksDtoToSave.getColour()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.cotton")
+                        .value(socksDtoToSave.getCotton()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.amount")
+                        .value(socksDtoToSave.getAmount()))
+                .andExpect(MockMvcResultMatchers.status().isAccepted());
         final SocksDto doubleSocksDtoToSave = testDoubleSocksDto;
         final ObjectMapper secondObjectMapper = new ObjectMapper();
         final String doubleSocksJson = secondObjectMapper.writeValueAsString(doubleSocksDtoToSave);
         mockMvc.perform(MockMvcRequestBuilders.put("/api/socks/"
-                                + doubleSocksDtoToSave.getTypeId().toString())
+                                + socksDtoToSave.getTypeId().toString())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(doubleSocksJson))
-                .andExpect(MockMvcResultMatchers.content().json(doubleSocksJson));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.colour")
+                        .value(doubleSocksDtoToSave.getColour()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.cotton")
+                        .value(doubleSocksDtoToSave.getCotton()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.amount")
+                        .value(doubleSocksDtoToSave.getAmount()))
+                .andExpect(MockMvcResultMatchers.status().isAccepted());
     }
 }

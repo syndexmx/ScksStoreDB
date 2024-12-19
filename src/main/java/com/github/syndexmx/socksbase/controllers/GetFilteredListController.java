@@ -2,6 +2,7 @@ package com.github.syndexmx.socksbase.controllers;
 
 import com.github.syndexmx.socksbase.controllers.dtos.SocksDto;
 import com.github.syndexmx.socksbase.services.SocksFilteredCollectionService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,7 @@ public class GetFilteredListController {
     }
 
     @GetMapping(path = "api/socks/filtered")
+    @Operation(summary = "Получение данных по критериям", description = "Позволяет найти все партии по критерию процентого состава")
     ResponseEntity<List<SocksDto>> getFilteredList(@RequestParam(required = false) Integer lessThan,
                                                    @RequestParam(required = false) Integer moreThan,
                                                    @RequestParam(required = false) Integer equal){

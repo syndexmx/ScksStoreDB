@@ -2,6 +2,8 @@ package com.github.syndexmx.socksbase.controllers;
 
 import com.github.syndexmx.socksbase.model.Socks;
 import com.github.syndexmx.socksbase.services.IncomingSocksService;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,7 @@ public class BatchIncomingSocksController {
     }
 
     @PostMapping(path = "api/socks/batch")
+    @Operation(summary = "Групповое добавление их файла", description = "Позволяет добавить несколько партий из загруженного файла .CSV")
     ResponseEntity<Object> batchIncome(@RequestBody String csvBody) {
         log.info("POST @api/socks/batch : " + csvBody.toString());
         List<Socks> incomingSocksList = getAllSocksFromBatch(csvBody);

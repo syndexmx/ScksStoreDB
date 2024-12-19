@@ -20,7 +20,7 @@ import static com.github.syndexmx.socksbase.controllers.dtos.TestSocksDto.*;
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class BatchIncomingSocksControllerTest {
+class BatchIncomingSocksControllerITest {
 
     @Autowired
     MockMvc mockMvc;

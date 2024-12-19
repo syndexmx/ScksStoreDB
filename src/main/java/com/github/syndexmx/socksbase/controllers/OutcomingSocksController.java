@@ -3,6 +3,7 @@ package com.github.syndexmx.socksbase.controllers;
 import com.github.syndexmx.socksbase.controllers.dtos.SocksDto;
 import com.github.syndexmx.socksbase.model.Socks;
 import com.github.syndexmx.socksbase.services.OutcomingSocksService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,7 @@ public class OutcomingSocksController {
     }
 
     @PostMapping(path = "api/socks/outcome")
+    @Operation(summary = "Отгрузка партии", description = "Позволяет изъять часть хранимых носков по цвету и составу")
     ResponseEntity<Object> socksIn(@RequestBody SocksDto socksDto) {
         log.info("POST @api/socks/outcome : " + socksDto.toString());
         Socks outgoingSocks = socksDtoToSocks(socksDto);
