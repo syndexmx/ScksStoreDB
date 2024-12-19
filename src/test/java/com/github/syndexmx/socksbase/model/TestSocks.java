@@ -23,4 +23,11 @@ public class TestSocks {
             .amount(48)
             .build();
 
+    public static Socks testOtherSocks = Socks.builder()
+            .typeId(4L)
+            .colour("magenta")
+            .cotton(88)
+            .amount(4)
+            .build();
+
 }
