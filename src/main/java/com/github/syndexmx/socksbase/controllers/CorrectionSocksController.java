@@ -3,6 +3,7 @@ package com.github.syndexmx.socksbase.controllers;
 import com.github.syndexmx.socksbase.controllers.dtos.SocksDto;
 import com.github.syndexmx.socksbase.model.Socks;
 import com.github.syndexmx.socksbase.services.CorrectionSocksService;
+import io.swagger.annotations.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import static com.github.syndexmx.socksbase.controllers.mappers.SocksDtoMapper.s
 @RestController
 @RequestMapping
 @Slf4j
-public class CorrectionSocksController {
+class CorrectionSocksController {
 
     private final CorrectionSocksService correctionSocksService;
 
