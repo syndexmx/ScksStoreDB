@@ -32,14 +32,9 @@ public class OutcomingSocksController {
     ResponseEntity<Object> socksIn(@RequestBody SocksDto socksDto) {
         log.info("POST @api/socks/outcome : " + socksDto.toString());
         Socks outgoingSocks = socksDtoToSocks(socksDto);
-        try {
-            SocksDto returnedSocksDto =
-                    socksToSocksDto(outcomingSocksService.removeSocks(outgoingSocks));
-            return new ResponseEntity<>(returnedSocksDto, HttpStatus.OK);
-        } catch (Exception e){
-            Object responseObject = (Object)e.getMessage().toString();
-            return new ResponseEntity<>(responseObject, HttpStatus.NOT_MODIFIED);
-        }
+        SocksDto returnedSocksDto =
+                socksToSocksDto(outcomingSocksService.removeSocks(outgoingSocks));
+        return new ResponseEntity<>(returnedSocksDto, HttpStatus.OK);
     }
 
 }
