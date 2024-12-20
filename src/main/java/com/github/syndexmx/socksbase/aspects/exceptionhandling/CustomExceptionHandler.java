@@ -1,4 +1,4 @@
-package com.github.syndexmx.socksbase.aspects;
+package com.github.syndexmx.socksbase.aspects.exceptionhandling;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

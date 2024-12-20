@@ -1,9 +1,11 @@
 package com.github.syndexmx.socksbase.model;
 
+import com.github.syndexmx.socksbase.aspects.exceptionhandling.CustomHttpResponseException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatus;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +29,7 @@ public class Socks {
 
     public Socks remove(Integer subtractedAmount){
         if (this.amount < subtractedAmount) {
-            throw new RuntimeException("Not enough socks");
+            throw new CustomHttpResponseException(HttpStatus.NOT_MODIFIED, "Не достаточно носков на хранении");
         }
         return Socks.builder()
                 .typeId(this.typeId)
