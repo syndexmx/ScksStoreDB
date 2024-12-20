@@ -34,15 +34,10 @@ public class CorrectionSocksController {
                                         @RequestBody SocksDto socksDto) {
         log.info("PUT @api/socks/" + id.toString() + ": " + socksDto.toString());
         socksDto.setTypeId(id);
-        try {
-            SocksDto resultDto = socksToSocksDto(correctionSocksService
-                    .correctSocks(socksDtoToSocks(socksDto)));
-            return new ResponseEntity<>(resultDto, HttpStatus.ACCEPTED);
-        } catch (Exception e) {
-            log.warn("Correction controller." + e.getMessage());
-            Object responseObject = (Object)e.getMessage().toString();
-            return new ResponseEntity<>(responseObject, HttpStatus.NOT_MODIFIED);
-        }
+        SocksDto resultDto = socksToSocksDto(correctionSocksService
+                .correctSocks(socksDtoToSocks(socksDto)));
+        return new ResponseEntity<>(resultDto, HttpStatus.ACCEPTED);
+
     }
 
 }

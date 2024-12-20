@@ -1,4 +1,5 @@
 spring.application.name=socksbase
+server.error.include-message=always
 
 spring.jpa.hibernate.ddl-auto=update
 
